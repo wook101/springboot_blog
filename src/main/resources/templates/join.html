@@ -1,0 +1,26 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+
+<th:block th:replace="fragment/config :: configFragment"></th:block>
+<title>Insert title here</title>
+</head>
+<body>
+	<th:block th:replace="fragment/header :: headerFragment"></th:block>
+	<div class="container">
+		<form action="">
+			<div class="form-group">
+				<label for="username">아이디:</label> <input type="text" class="form-control" placeholder="Enter username" id="username">
+			</div>
+			<div class="form-group">
+				<label for="password">비밀번호:</label> <input type="password" class="form-control" placeholder="Enter password" id="password">
+			</div>
+			<div class="form-group">
+				<label for="email">이메일:</label> <input type="email" class="form-control" placeholder="Enter email" id="email">
+			</div>
+		</form>
+		<button id="btn-join" class="btn btn-primary">가입하기</button>
+	</div>
+	<th:block th:replace="fragment/footer :: footerFragment"></th:block>
+	<script src="/blog/js/user.js"></script>
+</body>
+</html>

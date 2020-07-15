@@ -33,7 +33,7 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // IDENTITY 
 	private int id; //시퀀스 또는 auto_increment
 	
-	@Column(nullable=false, length=30)
+	@Column(nullable=false, length=30, unique=true)
 	private String username;
 	
 	@Column(nullable=false, length=100) // 비밀번호를 해쉬로 암호화 해서 넣기위해 넣넣히 100으로 잡음
