@@ -18,11 +18,12 @@ public class UserService {
 	public void join(User user) {
 		userRepository.save(user);	
 	}
-	
+	/*
 	//로그인
 	@Transactional(readOnly = true) //select의경우 읽기전용으로 정합성 유지, 쓰기작업이 일어나는것을 방지하기위해
 	public User login(String username, String password) {
 		return userRepository.findByUsernameAndPassword(username, password);
 	}
+	*/
 	
 }

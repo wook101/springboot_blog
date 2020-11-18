@@ -1,22 +1,26 @@
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+			xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">		
 	<th:block th:fragment="headerFragment">
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
-			<a class="navbar-brand text-white" href="/blog">홈</a>
+			<a class="navbar-brand text-white" href="/">홈</a>
 			<button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="collapse navbar-collapse" id="navbarNav">
 				
-				<ul th:if="${session.user eq null}" class="navbar-nav">
-					<li class="nav-item active"><a class="nav-link text-white" href="login">로그인</a></li>
-					<li class="nav-item active"><a class="nav-link text-white" href="join">회원가입</a></li>
+				<ul sec:authorize="isAnonymous()" class="navbar-nav">
+					<li class="nav-item active"><a class="nav-link text-white" href="/auth/login">로그인</a></li>
+					<li class="nav-item active"><a class="nav-link text-white" href="/auth/join">회원가입</a></li>
 				</ul>
 				
-				<ul th:if="${session.user ne null}" class="navbar-nav">
+				<ul sec:authorize="isAuthenticated()" class="navbar-nav">
 					<li class="nav-item active"><a class="nav-link text-white" href="write">글쓰기</a></li>
 					<li class="nav-item active"><a class="nav-link text-white" href="userInfo">회원정보</a></li>
-					<li class="nav-item active"><a class="nav-link text-white" href="logout">로그아웃</a></li>
+					<li class="nav-item active"><a class="nav-link text-white" onclick="document.querySelector('#logout').submit()">로그아웃</a></li>
 				</ul>
+				<form id="logout" action="/logout" method="post">
+					<input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}"/>
+				</form>
 				
 			</div>
 		</nav>
